@@ -7,6 +7,7 @@
 package GUI;
 
 import BE.ButtonClickCounter;
+import javax.swing.JToggleButton;
 
 /**
  *
@@ -292,8 +293,12 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         tbc1.up();
-        if(tbc1.value()==2) new LogOutWindow(this, tbc1).setVisible(true);
-            if(tbc1.value()<=2) tbc1.resetTo1();        
+        
+        if(tbc1.value()==2) new LogOutWindow(this, tbc1, jToggleButton1).setVisible(true);
+            if(tbc1.value()>=2) tbc1.down();
+            
+        if(tbc1.value() % 2 == 0) jToggleButton1.setSelected(false);
+        if(tbc1.value() % 2 == 1) jToggleButton1.setSelected(true);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -335,8 +340,11 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton9;
     // End of variables declaration//GEN-END:variables
 
-    public void tbcReset(ButtonClickCounter btncc){
+    public void tbcReset(ButtonClickCounter btncc, JToggleButton tbtn){
+        
         btncc.reset();
+        if(btncc.value() % 2 == 0) tbtn.setSelected(false);
+        if(btncc.value() % 2 == 1) tbtn.setSelected(true);
     }
     
 }

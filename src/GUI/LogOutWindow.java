@@ -7,6 +7,7 @@
 package GUI;
 
 import BE.ButtonClickCounter;
+import javax.swing.JToggleButton;
 
 /**
  *
@@ -16,14 +17,16 @@ public class LogOutWindow extends javax.swing.JFrame {
 
     MainFrame mainFrame;
     ButtonClickCounter btnNumber;
+    JToggleButton toggleBtn;
     
     /**
      * Creates new form LogOutWindow
      */
-    public LogOutWindow(MainFrame mf, ButtonClickCounter Number) {
+    public LogOutWindow(MainFrame mf, ButtonClickCounter number, JToggleButton tBtn) {
         initComponents();
         mainFrame = mf;
-        btnNumber = Number;
+        btnNumber = number;
+        toggleBtn = tBtn;
     }
 
     /**
@@ -81,8 +84,18 @@ public class LogOutWindow extends javax.swing.JFrame {
         jToggleButton10.setText("Bil 8");
 
         jButton1.setText("Anullér");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Godkend");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -151,13 +164,21 @@ public class LogOutWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        this.dispose();
+        
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        mainFrame.tbcReset(btnNumber);
-        this.dispose();
+        
     }//GEN-LAST:event_jToggleButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        mainFrame.tbcReset(btnNumber, toggleBtn);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

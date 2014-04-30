@@ -22,19 +22,16 @@ public class TimeLogBLL {
     
     TimeLogDAL tl = new TimeLogDAL();
     
-    public void timeRegister(Firemen f, String role, String type, Time loginTime) throws SQLException{
+    public void timeRegister(Firemen f, String type, boolean holiday, Time loginTime) throws SQLException{
         
         Time logoutTime = Time.valueOf(String.valueOf(new Timestamp(System.currentTimeMillis())));
         
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
         Date date = new Date();
         
-        //Feridag calc
-        boolean holiday = true;
+        String role = "Brandmand";
         
-        //løn_kode calc
-        String paymentCode = "";
         
-        tl.timeRegister(dateFormat.format(date), f, role, type, holiday, paymentCode, loginTime, logoutTime);
+        tl.timeRegister(dateFormat.format(date), f, role, type, holiday, loginTime, logoutTime);
     }
 }

@@ -17,15 +17,15 @@ import java.sql.Date;
 public class TimeLogDAL extends AbstractDAL {
     
     
-    public void timeRegister(String date, Firemen f, String role, String type, boolean holiday, String paymentCode, Time loginTime, Time logoutTime) throws SQLException{
+    public void timeRegister(String date, Firemen f, String role, String type, boolean holiday, Time loginTime, Time logoutTime) throws SQLException{
         
         Connection con = null;
         
         try{
             con = getConnection();
             stmt = con.createStatement();
-            stmt.executeUpdate("INSERT INTO løn_rapport (dato, brandmand, role, type_arbejde, ferie_dag, løn_kode, tid_logind, tid_logud) "
-                            + "VALUES ('" + date + "', '" + f.getCpr() + "', '" + role + "', '" + type + "', " + holiday + ", " + paymentCode + ", " + loginTime + ", " + logoutTime + ")");
+            stmt.executeUpdate("INSERT INTO midlertidig_løn (dato, brandmand, role, type_arbejde, ferie_dag, tid_logind, tid_logud) "
+                            + "VALUES ('" + date + "', '" + f.getCpr() + "', '" + role + "', '" + type + "', " + holiday + ", " + loginTime + ", " + logoutTime + ")");
         } finally{
             if(con != null) con.close();
         }
