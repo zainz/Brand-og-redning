@@ -6,8 +6,10 @@ package DAL;
 
 import BE.Firemen;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,17 +17,46 @@ import java.sql.Time;
  */
 public class TimeLogDAL extends AbstractDAL {
     
-    public void timeRegister(Time loginTime, Time logoutTime, Firemen f) throws SQLException{
+    
+    public void timeRegister(String date, Firemen f, int role, int type, boolean holiday, Time loginTime, Time logoutTime) throws SQLException{
         
         Connection con = null;
         
         try{
             con = getConnection();
             stmt = con.createStatement();
-            stmt.executeUpdate("INSERT INTO brandmand_tidsregistering (brandmand, tid_login, tid_logud) "
-                            + "VALUES ('" + f.getCpr() + "', " + loginTime + ", " + logoutTime + ")");
+            stmt.executeUpdate("INSERT INTO midlertidig_løn (dato, brandmand, role, type_arbejde, ferie_dag, tid_logind, tid_logud) "
+                            + "VALUES ('" + date + "', '" + f.getCpr() + "', " + role + ", " + type + ", " + holiday + ", " + loginTime + ", " + logoutTime + ")");
         } finally{
             if(con != null) con.close();
         }
+    }
+    
+    public ArrayList<Firemen> getFiremen() throws SQLException{
+        
+        Connection con = null;
+        ArrayList<Firemen> f = null;
+        
+        try{
+            con = getConnection();
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM brandmand");
+            while(rs.next()){
+                String cprNo = rs.getString("cpr_no");
+                String firstName = rs.getString("fornavn");
+                String lastName = rs.getString("efternavn");
+                String address = rs.getString("adresse");
+                String phone = rs.getString("telefon");
+                String callNo = rs.getString("udkaldsnummer");
+                String paymentNo = rs.getString("løn_nummer");
+                
+                Firemen firemen = new Firemen(cprNo, firstName, lastName, address, phone, callNo, paymentNo);
+                f.add(firemen);
+            }
+        } finally{
+            if(con != null) con.close();
+        }
+        
+        return f;
     }
 }
