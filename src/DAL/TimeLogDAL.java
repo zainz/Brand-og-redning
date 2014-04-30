@@ -5,11 +5,11 @@
 package DAL;
 
 import BE.Firemen;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.util.ArrayList;
 
 /**
  *
@@ -32,10 +32,10 @@ public class TimeLogDAL extends AbstractDAL {
         }
     }
     
-    public Firemen getFiremen() throws SQLException{
+    public ArrayList<Firemen> getFiremen() throws SQLException{
         
         Connection con = null;
-        Firemen f = null;
+        ArrayList<Firemen> f = null;
         
         try{
             con = getConnection();
@@ -51,7 +51,7 @@ public class TimeLogDAL extends AbstractDAL {
                 String paymentNo = rs.getString("løn_nummer");
                 
                 Firemen firemen = new Firemen(cprNo, firstName, lastName, address, phone, callNo, paymentNo);
-                f = firemen;
+                f.add(firemen);
             }
         } finally{
             if(con != null) con.close();
