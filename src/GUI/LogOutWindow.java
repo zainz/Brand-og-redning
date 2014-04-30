@@ -7,6 +7,9 @@
 package GUI;
 
 import BE.ButtonClickCounter;
+import BE.Firemen;
+import BLL.TimeLogBLL;
+import java.sql.Time;
 import javax.swing.JToggleButton;
 
 /**
@@ -15,6 +18,7 @@ import javax.swing.JToggleButton;
  */
 public class LogOutWindow extends javax.swing.JFrame {
 
+    TimeLogBLL tl;
     MainFrame mainFrame;
     ButtonClickCounter btnNumber;
     JToggleButton toggleBtn;
@@ -27,6 +31,7 @@ public class LogOutWindow extends javax.swing.JFrame {
         mainFrame = mf;
         btnNumber = number;
         toggleBtn = tBtn;
+        tl = new TimeLogBLL();
     }
 
     /**
@@ -177,6 +182,22 @@ public class LogOutWindow extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         mainFrame.tbcReset(btnNumber, toggleBtn);
+//        
+//        Firemen f = new Firemen();
+//        
+//        boolean holiday;
+//        int role = 1;
+//        int type = 1;
+//        Time t;
+//        
+//        if(jToggleButton1.isSelected()) role = 2;
+//        else role = 1;
+//        
+//        if(jToggleButton2.isSelected()) type = 3;
+//        else type = 1;
+//        
+//        tl.timeRegister(f, type, role, holiday, t.valueOf(mainFrame.lbl.getText));
+//        
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 

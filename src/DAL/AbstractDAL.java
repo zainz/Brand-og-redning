@@ -18,7 +18,7 @@ import java.sql.Statement;
 public class AbstractDAL {
     
     private final String database = "BrandOgRedning"; 
-    private final String server = "10.249.84.4";
+    private final String server = "10.249.84.2";
     private final String user = "user";
     private final String password = "pass";
     private SQLServerDataSource ds;
