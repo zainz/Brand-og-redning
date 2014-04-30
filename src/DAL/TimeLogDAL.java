@@ -30,31 +30,4 @@ public class TimeLogDAL extends AbstractDAL {
             if(con != null) con.close();
         }
     }
-    
-    public void loginRegister(Time loginTime, Firemen f) throws SQLException{
-        
-        Connection con = null;
-        
-        try{
-            con = getConnection();
-            stmt = con.createStatement();
-            stmt.executeUpdate("INSERT INTO brandmand_tidsregistering (brandmand, tid_login) "
-                            + "VALUES ('" + f.getCpr() + "', " + loginTime + ")");
-        } finally{
-            if(con != null) con.close();
-        }
-    }
-    
-    public void logoutRegister(Time logoutTime, Firemen f, String date) throws SQLException{
-        Connection con = null;
-        
-        try{
-            con = getConnection();
-            stmt = con.createStatement();
-            stmt.executeUpdate("INSERT INTO brandmand_tidsregistering (tid_logud, dato) "
-                            + "VALUES (" + logoutTime + ", " + date + ") WHERE brandmand = '" + f.getCpr() + "'");
-        } finally{
-            if(con != null) con.close();
-        }
-    }
 }
