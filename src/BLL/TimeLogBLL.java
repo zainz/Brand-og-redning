@@ -12,6 +12,7 @@ import java.sql.Time;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 /**
  *
@@ -30,4 +31,10 @@ public class TimeLogBLL {
         
         tl.timeRegister(dateFormat.format(date), f, role, type, holiday, loginTime, logoutTime);
     }
+    
+    public ArrayList<Firemen> getFiremen() throws SQLException{
+        return tl.getFiremen();
+    }
 }
+
+    
