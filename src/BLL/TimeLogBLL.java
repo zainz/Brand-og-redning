@@ -37,19 +37,4 @@ public class TimeLogBLL {
         
         tl.timeRegister(dateFormat.format(date), f, role, type, holiday, paymentCode, loginTime, logoutTime);
     }
-    
-    public void loginRegister(Firemen f) throws SQLException{
-        
-        Time loginTime = Time.valueOf(String.valueOf(new Timestamp(System.currentTimeMillis())));
-        
-        tl.loginRegister(loginTime, f);
-    }
-    
-    public void logoutRegister(Firemen f) throws SQLException{
-        
-        Time logoutTime = Time.valueOf(String.valueOf(new Timestamp(System.currentTimeMillis())));
-        String date = String.valueOf(Calendar.DATE);
-        
-        tl.logoutRegister(logoutTime, f, date);
-    }
 }
