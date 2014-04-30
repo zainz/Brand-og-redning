@@ -25,7 +25,6 @@ public class TimeLogDAL extends AbstractDAL {
             stmt = con.createStatement();
             stmt.executeUpdate("INSERT INTO midlertidig_løn (dato, brandmand, role, type_arbejde, ferie_dag, tid_logind, tid_logud) "
                             + "VALUES ('" + date + "', '" + f.getCpr() + "', " + role + ", " + type + ", " + holiday + ", " + loginTime + ", " + logoutTime + ")");
-            stmt.executeUpdate("");
         } finally{
             if(con != null) con.close();
         }

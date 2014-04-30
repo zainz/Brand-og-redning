@@ -21,15 +21,12 @@ public class TimeLogBLL {
     
     TimeLogDAL tl = new TimeLogDAL();
     
-    public void timeRegister(Firemen f, int type, boolean holiday, Time loginTime) throws SQLException{
+    public void timeRegister(Firemen f, int type, int role, boolean holiday, Time loginTime) throws SQLException{
         
         Time logoutTime = Time.valueOf(String.valueOf(new Timestamp(System.currentTimeMillis())));
         
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
         Date date = new Date();
-        
-        int role = 1;
-        
         
         tl.timeRegister(dateFormat.format(date), f, role, type, holiday, loginTime, logoutTime);
     }
