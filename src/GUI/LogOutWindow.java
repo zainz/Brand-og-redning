@@ -6,17 +6,24 @@
 
 package GUI;
 
+import BE.ButtonClickCounter;
+
 /**
  *
  * @author Disco
  */
 public class LogOutWindow extends javax.swing.JFrame {
 
+    MainFrame mainFrame;
+    ButtonClickCounter btnNumber;
+    
     /**
      * Creates new form LogOutWindow
      */
-    public LogOutWindow() {
+    public LogOutWindow(MainFrame mf, ButtonClickCounter Number) {
         initComponents();
+        mainFrame = mf;
+        btnNumber = Number;
     }
 
     /**
@@ -144,11 +151,12 @@ public class LogOutWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        // TODO add your handling code here:
+        mainFrame.tbcReset(btnNumber);
+        this.dispose();
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
 
